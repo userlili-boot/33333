@@ -15,5 +15,7 @@ public class ManageStarter {
         SpringApplication.run(ManageStarter.class, args);
         System.out.println("---------------spring boot end------------------------");
     }
+    
+    
 
 }
