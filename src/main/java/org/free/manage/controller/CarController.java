@@ -6,6 +6,8 @@ import org.free.manage.entity.Car;
 import org.free.manage.framework.Result;
 import org.free.manage.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +27,13 @@ public class CarController extends BaseController {
     public Mono<Result<Integer>> createCar(@RequestBody Car car){
         Integer id = carService.create(car);
         return ok(id);
+    }
+    
+    @ApiOperation("查询车型")
+    @GetMapping("{id}/detail")
+    public Mono<Result<Car>> detail(@PathVariable("id")Integer id){
+    	Car car = carService.findById(id);
+		return ok(car);
     }
 
 }
